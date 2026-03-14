@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10MZF0RC1T"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-10MZF0RC1T');
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>The Story of Mohamed</title>
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Fonts -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Inter:wght@400;600&display=swap">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        :root {
+            --story-bg: #050a0b;
+            --story-accent: #e36414;
+            --story-text: rgba(255, 255, 255, 0.95);
+        }
+
+        body.story-page {
+            background: var(--story-bg);
+            color: var(--story-text);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Scroll Snap Container --- */
+        .story-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 10%;
+            scroll-snap-align: start;
+            position: relative;
+            text-align: center;
+        }
+
+        /* --- Background Visuals --- */
+        .story-bg-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a1f24 0%, #050a0b 100%);
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.5;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-10px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-5px) translateX(-50%);
+            }
+        }
+
+        /* --- Typography & Elements --- */
+        .chapter-number {
+            font-size: 1rem;
+            color: var(--story-accent);
+            font-weight: 700;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .story-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+
+        .story-desc {
+            font-size: clamp(1.1rem, 2vw, 1.8rem);
+            font-weight: 300;
+            max-width: 800px;
+            color: rgba(255, 255, 255, 0.6);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.4s;
+        }
+
+        /* --- Active Section States --- */
+        section.active .chapter-number,
+        section.active .story-title,
+        section.active .story-desc {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Specific Section Accents --- */
+        .accent-box {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--story-accent);
+            filter: blur(150px);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* --- Contact Button --- */
+        .story-cta {
+            margin-top: 40px;
+            background: var(--story-accent);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 100px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease 0.6s;
+        }
+
+        section.active .story-cta {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* --- Mobile Tweaks --- */
+        @media (max-width: 768px) {
+            section {
+                padding: 0 5%;
+            }
+
+            .story-title {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="story-page">
+
+    <div class="story-bg-overlay"></div>
+    <div class="scroll-indicator" id="scroller">Scroll to begin</div>
+
+    <div class="story-container">
+
+        <!-- Chapter 1: The Silence -->
+        <section id="chapter-1">
+            <div class="chapter-number">01</div>
+            <h1 class="story-title">The Silence of the <span style="color: var(--story-accent);">Street</span></h1>
+            <p class="story-desc">In the heart of the city, your shop has a voice. But when the shutters go down at 9:00
+                PM, that voice fades into the darkness.</p>
+            <div class="accent-box" style="top: 20%; left: 10%;"></div>
+        </section>
+
+        <!-- Chapter 2: The Limitation -->
+        <section id="chapter-2">
+            <div class="chapter-number">02</div>
+            <h2 class="story-title">Walls Don't <span style="color: var(--story-accent);">Scale</span></h2>
+            <p class="story-desc">Your physical store is brilliant, but it's bound by bricks. People outside your
+                neighborhood might never know the excellence you offer inside.</p>
+            <div class="accent-box" style="bottom: 10%; right: 10%;"></div>
+        </section>
+
+        <!-- Chapter 3: The Transformation -->
+        <section id="chapter-3">
+            <div class="chapter-number">03</div>
+            <h2 class="story-title">The Digital <br><span style="color: var(--story-accent);">Awakening</span></h2>
+            <p class="story-desc">Mohamed Creations doesn't just build websites; we give your store a soul that never
+                sleeps. A home where distance doesn't exist.</p>
+        </section>
+
+        <!-- Chapter 4: The Result -->
+        <section id="chapter-4">
+            <div class="chapter-number">04</div>
+            <h2 class="story-title">Selling While You <span style="color: var(--story-accent);">Dream</span></h2>
+            <p class="story-desc">Your customers browse the aisles of your digital shop from their living rooms, at 2:00
+                AM, without you saying a single word.</p>
+            <div class="accent-box" style="top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
+        </section>
+
+        <!-- Chapter 5: The Invitation -->
+        <section id="chapter-5">
+            <div class="chapter-number">The Finale</div>
+            <h2 class="story-title">Write Your <br><span style="color: var(--story-accent);">Legacy</span></h2>
+            <p class="story-desc">Ready to transcend the physical? Let's build a website that stands the test of time
+                and space.</p>
+            <a href="mailto:rasikmma@outlook.com" class="story-cta">Contact Mohamed</a>
+            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.4;">DESIGNED BY MOHAMED CREATIONS</p>
+        </section>
+
+    </div>
+
+    <script>
+        // Intersection Observer to trigger animations
+        const sections = document.querySelectorAll('section');
+        const scroller = document.getElementById('scroller');
+
+        const options = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+
+                    // Update scroller text
+                    if (entry.target.id === 'chapter-5') {
+                        scroller.style.opacity = '0';
+                    } else {
+                        scroller.style.opacity = '0.5';
+                    }
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, options);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Smooth scroll handling for mouse wheel
+        const container = document.querySelector('.story-container');
+        container.addEventListener('wheel', (e) => {
+            // Let snap-type handle it
+        });
+    </script>
+</body>
+
+</html>
