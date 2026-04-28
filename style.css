@@ -701,6 +701,7 @@ footer {
 .footer-col ul li a {
     opacity: 0.8;
     font-size: 0.95rem;
+    display: inline-block;
 }
 
 .footer-col ul li a:hover {
