@@ -674,7 +674,7 @@ section {
 footer {
     background: #0a313b;
     color: var(--white);
-    padding: 80px 5% 40px;
+    padding: 80px max(5%, calc(50% - 600px)) 40px;
 }
 
 .footer-grid {
@@ -691,7 +691,26 @@ footer {
 
 .footer-col p {
     opacity: 0.8;
+    margin-bottom: 15px;
+}
+
+.footer-col ul li {
     margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    opacity: 0.8;
+    font-size: 0.95rem;
+}
+
+.footer-col ul li a:hover {
+    opacity: 1;
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+.footer-col:nth-child(2) {
+    padding-left: 40px;
 }
 
 .shop-status {
@@ -1156,6 +1175,10 @@ footer {
     .footer-grid {
         grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    .footer-col:nth-child(2) {
+        padding-left: 0;
     }
 }
 
